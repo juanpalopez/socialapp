@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socialapp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+
+<% if current_user %>
+	<p><%= current_user.name %></p>
+	<p><%= link_to "Cerrar Sesión", signout_path %></p>
+<% else %>
+	<p><%= link_to "Iniciar sesión con Facebook", "/auth/facebook" %></p>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
